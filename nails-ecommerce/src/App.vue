@@ -1,6 +1,8 @@
 <template>
-  <h1>hello world nail things</h1>
+  <Header />
 </template>
-<script setup></script>
+<script setup>
+import Header from "@/components/Header.vue";
+</script>
 
 <style scoped></style>
