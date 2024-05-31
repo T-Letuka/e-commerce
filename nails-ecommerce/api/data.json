@@ -14,7 +14,7 @@
       "brief": "Sharp Elegance: Elevate your style game with our striking Stiletto nails, perfect for making a statement.",
       "bgColor": "#555555",
       "imgUrl": "/stilleto1.jpg",
-      "active": true
+      "active": false
     },
     {
       "id": 3,
@@ -37,8 +37,8 @@
       "name": "Square",
       "brief": "Sleek Precision: Our Square nails offer a sharp and sophisticated look for the contemporary fashionista",
       "bgColor": "#E5E4E2",
-      "imgUrl": "/sqaure.jpg",
-      "active": false
+      "imgUrl": "/square.jpg",
+      "active": true
     }
   ]
 }

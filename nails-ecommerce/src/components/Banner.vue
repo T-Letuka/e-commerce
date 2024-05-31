@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <Slide v-for="item in items" :key="item.id" :item="item" />
-    <BannerSwiper :items="items" :change="handleChange" />
+    <BannerSwiper :items="items" :bannerChange="handleChange" />
   </div>
 </template>
 <script setup>
