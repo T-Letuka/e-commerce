@@ -1,7 +1,7 @@
-<template lang="">
-  <div></div>
+<template>
+  <Banner />
 </template>
-<script>
-export default {};
+<script setup>
+import Banner from "@/components/Banner.vue";
 </script>
 <style lang=""></style>

@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Stilleto",
+      "brief": "Fierce and Fabulous: Channel your inner diva with our Stiletto nails, designed for those who dare to be bold.",
+      "bgColor": "#E5E4E2",
+      "imgUrl": "/stilleto.jpg",
+      "active": false
+    },
+    {
+      "id": 2,
+      "name": "Stilleto",
+      "brief": "Sharp Elegance: Elevate your style game with our striking Stiletto nails, perfect for making a statement.",
+      "bgColor": "#555555",
+      "imgUrl": "/stilleto1.jpg",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Coffin",
+      "brief": "Chic and Sleek: Discover the ultimate in modern elegance with our Coffin nails, designed for the trendsetter in you.",
+      "bgColor": "#E5E4E2",
+      "imgUrl": "/coffin.jpg",
+      "active": false
+    },
+    {
+      "id": 4,
+      "name": "Almond",
+      "brief": "Classic Beauty: Achieve a timeless look with our Almond nails, where elegance meets simplicity.",
+      "bgColor": "#E5E4E2",
+      "imgUrl": "/almond.jpg",
+      "active": false
+    },
+    {
+      "id": 5,
+      "name": "Square",
+      "brief": "Sleek Precision: Our Square nails offer a sharp and sophisticated look for the contemporary fashionista",
+      "bgColor": "#E5E4E2",
+      "imgUrl": "/sqaure.jpg",
+      "active": false
+    }
+  ]
+}

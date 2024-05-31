@@ -1,6 +1,9 @@
 <template>
   <SideNav />;
   <Header />
+  <main id="main">
+    <RouterView />
+  </main>
 </template>
 <script setup>
 import Header from "@/components/Header.vue";
