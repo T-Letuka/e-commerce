@@ -39,4 +39,9 @@ const handleChange = (id) => {
     min-height: 100vh;
   }
 }
+@media (min-height: 800px) {
+  .banner {
+    min-height: 80vh;
+  }
+}
 </style>

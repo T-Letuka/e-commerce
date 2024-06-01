@@ -29,10 +29,6 @@ const props = defineProps({
 });
 </script>
 <style scoped>
-img {
-  width: 550px;
-  border-radius: 5%;
-}
 .banner-slide {
   position: absolute;
   left: 0;
@@ -84,6 +80,10 @@ img {
   letter-spacing: 1px;
   cursor: pointer !important;
 }
+.item-img .img-container img {
+  border-radius: 10px;
+  width: 95%;
+}
 .item-img .img-container {
   position: relative;
   width: 600px;
@@ -113,7 +113,7 @@ img {
     width: 400px;
     height: 400px;
   }
-  .content .design .liked {
+  .content .designs .liked {
     font-size: 1rem;
     padding: 10px 20px;
   }
@@ -153,6 +153,37 @@ img {
   .item-img .img-container img {
     width: 200px;
     height: 300px;
+  }
+  .content .designs .liked {
+    font-size: 15px;
+    padding: 15px 20px;
+    text-transform: uppercase;
+    border-radius: 12px;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 568px) {
+  .content {
+    padding-bottom: 100px;
+  }
+
+  .content h1 {
+    font-size: 3.5rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .item-img .img-container {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  .item-img .img-container img {
+    width: 90%;
   }
 }
 </style>

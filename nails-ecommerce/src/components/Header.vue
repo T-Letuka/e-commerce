@@ -85,7 +85,7 @@ header {
 }
 @media (max-width: 768px) {
   header {
-    padding: 10px 50px;
+    padding: 10px 70px;
   }
   .nav {
     display: none;

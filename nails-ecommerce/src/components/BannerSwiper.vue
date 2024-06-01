@@ -2,7 +2,7 @@
   <swiper
     :slidesPerView="3"
     :spaceBetween="30"
-    :naviagtion="true"
+    :navigation="true"
     :modules="modules"
     class="mySwiper"
   >
@@ -33,7 +33,7 @@ const props = defineProps({
   },
 });
 </script>
-<style scoped>
+<style>
 .swiper {
   position: absolute;
   width: 30%;
@@ -64,7 +64,7 @@ const props = defineProps({
   height: 54px;
 }
 .swiper .swiper-button-next::after,
-.swiper .swiper-button-pre::after {
+.swiper .swiper-button-prev::after {
   font-size: 30px;
   line-height: 0;
   width: 54px;
@@ -72,7 +72,7 @@ const props = defineProps({
   background: transparent;
   border-radius: 50%;
   transition: 0.3s;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(247, 9, 9);
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px);
   display: flex;
@@ -81,9 +81,46 @@ const props = defineProps({
   transition: 0.3s;
 }
 .swiper .swiper-button-next::hover,
-.swiper .swiper-button-pre::hover {
+.swiper .swiper-button-prev::hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(252, 10, 10, 0.8) !important;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+@media (max-width: 1440px) {
+  .swiper {
+    width: 25%;
+    left: 15%;
+  }
+  .swiper-slide {
+    width: 120px;
+    height: 120px;
+  }
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (max-width: 768px) {
+  .swiper {
+    width: 90%;
+    left: 5%;
+    bottom: 20px;
+    padding-bottom: 20px;
+    padding-top: 5px;
+  }
+  .swiper-slide {
+    width: 80px;
+    height: 80px;
+  }
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
 }
 </style>
