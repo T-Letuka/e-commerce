@@ -48,9 +48,9 @@ section {
   z-index: 900;
 }
 
-section section-title {
+section .section-title {
   position: relative;
-  color: #ffffff;
+  color: black;
   font-weight: 500;
   font-size: 1.6rem;
   letter-spacing: 1px;
@@ -59,7 +59,8 @@ section section-title {
   text-align: center;
 }
 
-section section-title::after {
+section .section-title::after {
+  position: absolute;
   content: "";
   left: 50%;
   transform: translateX(-50%);
