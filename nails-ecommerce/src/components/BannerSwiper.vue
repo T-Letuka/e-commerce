@@ -1,15 +1,17 @@
 <template>
-  <swiper
-    :slidesPerView="3"
-    :spaceBetween="30"
-    :navigation="true"
-    :modules="modules"
-    class="mySwiper"
-  >
-    <swiper-slide v-for="item in items.slice(0, 5)" :key="item.id">
-      <img :src="item.imgUrl" alt="imgaes" @click="bannerChange(item.id)" />
-    </swiper-slide>
-  </swiper>
+  <div class="banner-swiper">
+    <swiper
+      :slidesPerView="3"
+      :spaceBetween="30"
+      :navigation="true"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <swiper-slide v-for="item in items.slice(0, 5)" :key="item.id">
+        <img :src="item.imgUrl" alt="imgaes" @click="bannerChange(item.id)" />
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -34,7 +36,7 @@ const props = defineProps({
 });
 </script>
 <style>
-.swiper {
+.banner-swiper .swiper {
   position: absolute;
   width: 30%;
   bottom: 50px;
@@ -42,29 +44,29 @@ const props = defineProps({
   padding-bottom: 50px;
   padding-top: 10px;
 }
-.swiper-slide {
+.banner-swiper .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 100px;
   height: 100px;
   cursor: pointer;
 }
-.swiper .swiper-button-prev {
+.banner-swiper .swiper .swiper-button-prev {
   position: absolute;
   left: 0;
   top: 50%;
   width: 54px;
   height: 54px;
 }
-.swiper .swiper-button-next {
+.banner-swiper .swiper .swiper-button-next {
   position: absolute;
   right: 0;
   top: 50%;
   width: 54px;
   height: 54px;
 }
-.swiper .swiper-button-next::after,
-.swiper .swiper-button-prev::after {
+.banner-swiper .swiper .swiper-button-next::after,
+.banner-swiper .swiper .swiper-button-prev::after {
   font-size: 30px;
   line-height: 0;
   width: 54px;
@@ -80,8 +82,8 @@ const props = defineProps({
   justify-content: center;
   transition: 0.3s;
 }
-.swiper .swiper-button-next::hover,
-.swiper .swiper-button-prev::hover {
+.banner-swiper .swiper .swiper-button-next::hover,
+.banner-swiper .swiper .swiper-button-prev::hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2) !important;
   color: rgba(252, 10, 10, 0.8) !important;
