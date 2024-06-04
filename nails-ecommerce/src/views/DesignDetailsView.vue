@@ -25,7 +25,6 @@
             :navigation="true"
             :modules="modules"
             @slideChange="onSlideChange"
-            @click="handleSelectedDesign(designs.designs, designs.id)"
           >
             <swiper-slide
               v-for="(design, index) in items.designs"
@@ -37,11 +36,20 @@
                 :alt="'Design ' + design.id"
                 class="thumb-image"
               />
+              <button class="like-button" @click="handleLikedItems(design)">
+                Like
+              </button>
             </swiper-slide>
           </swiper>
         </div>
         <div class="b">
-          <a href="#" class="addButton me-3"> Add to Liked </a>
+          <a
+            href="#"
+            class="addButton me-3"
+            @click.stop.prevent="handleLikedItems(items)"
+          >
+            Add to Liked
+          </a>
         </div>
       </div>
     </div>
@@ -50,7 +58,7 @@
 
 <script setup>
 import { useRoute } from "vue-router";
-import { onMounted, ref } from "vue";
+import { inject, onMounted, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
@@ -88,12 +96,18 @@ onMounted(() => {
 const selectedDesign = ref("/placeholder.png");
 const handleSelectedDesign = (design, id) => {
   selectedDesign.value = design;
-  items.value.designs,
-    map((designs) => {
-      designs.active = false;
-      if (designs.id === id) designs.active;
-      return designs;
-    });
+  items.value.designs = items.value.designs.map((d) => {
+    d.active = d.id === id;
+    return d;
+  });
+};
+const liked = ref(inject("liked"));
+const handleLikedItems = (design) => {
+  if (liked.value.some((likedDesign) => likedDesign.id === design.id)) {
+    return;
+  }
+  liked.value.push({ ...design });
+  console.log(liked.value);
 };
 </script>
 
@@ -110,6 +124,11 @@ const handleSelectedDesign = (design, id) => {
 .thumb-image {
   width: 100%;
   height: auto;
+  cursor: pointer;
+}
+.like-button {
+  display: block;
+  margin-top: 10px;
   cursor: pointer;
 }
 </style>
