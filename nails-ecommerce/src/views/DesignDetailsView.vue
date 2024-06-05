@@ -50,6 +50,7 @@
           >
             Add to Liked
           </a>
+          <RouterLink to="/liked">Go to liked</RouterLink>
         </div>
       </div>
     </div>
@@ -102,11 +103,12 @@ const handleSelectedDesign = (design, id) => {
   });
 };
 const liked = ref(inject("liked"));
+
 const handleLikedItems = (design) => {
   if (liked.value.some((likedDesign) => likedDesign.id === design.id)) {
     return;
   }
-  liked.value.push({ ...design });
+  liked.value.push({ ...design, name: items.value.name });
   console.log(liked.value);
 };
 </script>

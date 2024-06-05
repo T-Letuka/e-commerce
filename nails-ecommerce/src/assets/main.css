@@ -58,7 +58,33 @@ section .section-title {
   text-transform: uppercase;
   text-align: center;
 }
-
+.special-title {
+  position: relative;
+  color: black;
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.special-title:after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  height: 3px;
+  width: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary),
+    var(--primary),
+    transparent
+  );
+  z-index: 1000;
+}
 section .section-title::after {
   position: absolute;
   content: "";
