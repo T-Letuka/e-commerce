@@ -3,10 +3,14 @@
     <RouterLink to="/liked" class="liked"
       ><i class="bi bi-balloon-heart"></i
     ></RouterLink>
-    <span class="count">4</span>
+    <span class="count">{{ liked.length }}</span>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { inject, ref } from "vue";
+
+const liked = ref(inject("liked"));
+</script>
 <style scoped>
 .count {
   font-size: 1.2rem;
