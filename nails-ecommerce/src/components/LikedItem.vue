@@ -9,12 +9,14 @@
     </td>
     <td>
       <a href="#"
-        ><i className="bi bi-trash" @click.prevent="removeItem"></i
+        ><i className="bi bi-trash" @click.stop.prevent="removeItem(item)"></i
       ></a>
     </td>
   </tr>
 </template>
 <script setup>
+import { inject, ref } from "vue";
+
 const props = defineProps({
   item: {
     type: Object,
@@ -25,11 +27,11 @@ const props = defineProps({
     required: true,
   },
 });
+const liked = ref(inject("liked"));
 
-const emit = defineEmits(["remove"]);
-
-const removeItem = () => {
-  emit("remove", item.id);
+const removeItem = (target) => {
+  let index = liked.value.indexOf(target);
+  liked.value.splice(index, 1);
 };
 </script>
 <style scoped>
