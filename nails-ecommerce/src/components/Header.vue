@@ -4,13 +4,14 @@
     <ul class="nav">
       <li v-for="nav in navs" :key="nav.id" class="poppins-medium">
         <RouterLink
+          :to="nav.link"
           v-if="nav.name === 'Home'"
           :class="{ active: nav.active }"
           @click="handleactive(nav.id)"
           id="house"
           ><i class="bi bi-house-heart"></i
         ></RouterLink>
-        <RouterLink v-else to="/" @click="handleactive(nav.id)">{{
+        <RouterLink v-else :to="nav.link" @click="handleactive(nav.id)">{{
           nav.name
         }}</RouterLink>
       </li>
@@ -24,15 +25,13 @@
 import { navigationData } from "@/data/data";
 import Liked from "@/components/Liked.vue";
 import { ref } from "vue";
-const handleactive = (id) => {
-  navs.value.map((nav) => {
-    nav.active = false;
-    if (nav.id === id) nav.active = true;
-    return nav;
-  });
-};
 
 const navs = ref(navigationData);
+const handleactive = (id) => {
+  navs.value.forEach((nav) => {
+    nav.active = nav.id === id;
+  });
+};
 </script>
 <style scoped>
 header {

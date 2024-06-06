@@ -76,7 +76,33 @@
       "brief": "Crisp and Classy: Elevate your style with Square nails that are perfect for a polished and professional appearance.",
       "bgColor": "#F2C1D1",
       "imgUrl": "/squoval.png",
-      "active": false
+      "active": false,
+      "designs": [
+        {
+          "id": 1,
+          "image": "/squoval/squoval01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 2,
+          "image": "/coffin/coffin02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 3,
+          "image": "/squoval/squoval03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 4,
+          "image": "/squoval/squoval04.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
     },
 
     {
@@ -85,7 +111,69 @@
       "brief": "Chic and Sleek: Discover the ultimate in modern elegance with our Coffin nails, designed for the trendsetter in you.",
       "bgColor": "#592720",
       "imgUrl": "/coffin.png",
-      "active": false
+      "active": false,
+      "designs": [
+        {
+          "id": 1,
+          "image": "/coffin/coffin01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 2,
+          "image": "/coffin/coffin02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 3,
+          "image": "/coffin/coffino03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 4,
+          "image": "/coffin/coffin04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 5,
+          "image": "/coffin/coffin05.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 6,
+          "image": "/coffin/coffin10.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 7,
+          "image": "/coffin/coffin06.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 8,
+          "image": "/coffin/coffin07.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 9,
+          "image": "/coffin/coffin08.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 10,
+          "image": "/coffin/coffin09.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
     },
     {
       "id": 4,
@@ -93,7 +181,39 @@
       "brief": "Classic Beauty: Achieve a timeless look with our Almond nails, where elegance meets simplicity.",
       "bgColor": "#D2B48C",
       "imgUrl": "/almond1.png",
-      "active": false
+      "active": false,
+      "designs": [
+        {
+          "id": 1,
+          "image": "/almond/almond01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 2,
+          "image": "/almond/almond02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 3,
+          "image": "/almond/almond03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 4,
+          "image": "/almond/almond04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 5,
+          "image": "/almond/almond05.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
     },
     {
       "id": 5,
@@ -241,7 +361,39 @@
       "brief": "Stand out from the crowd with duck nails, featuring a fun and funky shape that's perfect for the trendsetter in you.",
       "bgColor": "#C8A2C8",
       "imgUrl": "/duck.png",
-      "active": false
+      "active": false,
+      "designs": [
+        {
+          "id": 1,
+          "image": "/duck/duck01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 2,
+          "image": "/duck/duck02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 3,
+          "image": "/duck/duck03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 4,
+          "image": "/duck/duck04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 5,
+          "image": "/duck/duck05.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
     },
     {
       "id": 8,
@@ -249,7 +401,27 @@
       "brief": "Add a touch of drama to your manicure with lipstick nails, inspired by the iconic shape of your favorite beauty essential.",
       "bgColor": "#F1DDCF",
       "imgUrl": "/lipstick.png",
-      "active": false
+      "active": false,
+      "designs": [
+        {
+          "id": 1,
+          "image": "/lipstick/lipstick01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 2,
+          "image": "/lipstick/lipstick02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 3,
+          "image": "/lipstick/lipstick03.png",
+          "active": true,
+          "alt": "Design 1"
+        }
+      ]
     }
   ]
 }

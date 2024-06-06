@@ -6,13 +6,16 @@
     </div>
     <div class="contentBox">
       <h2>{{ item.name }}</h2>
-      <RouterLink :to="`/designs/${item.id}`">
+      <RouterLink :to="{ name: 'DesignPreview', params: { id: item.id } }">
         See More <i class="bi bi-box-arrow-right"></i>
       </RouterLink>
     </div>
   </div>
 </template>
+
 <script setup>
+import { RouterLink } from "vue-router";
+
 const props = defineProps({
   item: {
     type: Object,

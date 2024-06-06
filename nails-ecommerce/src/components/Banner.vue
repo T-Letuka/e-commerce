@@ -5,18 +5,12 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import BannerSwiper from "./BannerSwiper.vue";
 import Slide from "./Slide.vue";
+import data from "/api/data.json";
 
-const items = ref([]);
-
-onMounted(() => {
-  fetch("http://localhost:5000/items")
-    .then((res) => res.json())
-    .then((data) => (items.value = data))
-    .catch((e) => console.log(e.message));
-});
+const items = ref(data.items);
 
 const handleChange = (id) => {
   items.value.map((item) => {

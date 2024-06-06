@@ -16,18 +16,13 @@
     </div>
   </section>
 </template>
+
 <script setup>
 import Cards from "@/components/Cards.vue";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
+import data from "/api/data.json";
 
-const items = ref([]);
-
-onMounted(() => {
-  fetch("http://localhost:5000/items")
-    .then((res) => res.json())
-    .then((data) => (items.value = data))
-    .catch((e) => console.log(e.message));
-});
+const items = ref(data.items);
 </script>
 <style scoped>
 .designs {

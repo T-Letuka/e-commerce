@@ -15,7 +15,7 @@
       <div class="col-md-6 column">
         <h2>Column 2</h2>
         <p>This is the second column.</p>
-        <p>{{ items.brief }}</p>
+        <p>{{ selectedItem.brief }}</p>
         <div>
           <swiper
             ref="swiperRef"
@@ -27,7 +27,7 @@
             @slideChange="onSlideChange"
           >
             <swiper-slide
-              v-for="(design, index) in items.designs"
+              v-for="(design, index) in selectedItem.designs"
               :key="design.id"
               @click="updateMainImage(design)"
             >
@@ -46,7 +46,7 @@
           <a
             href="#"
             class="addButton me-3"
-            @click.stop.prevent="handleLikedItems(items)"
+            @click.stop.prevent="handleLikedItems(selectedItem)"
           >
             Add to Liked
           </a>
@@ -64,13 +64,16 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
+import data from "/api/data.json"; // Ensure the correct path to your data.json file
+
+const items = ref(data.items);
 
 const modules = [Navigation];
 const route = useRoute();
-const id = route.params.id;
+const id = parseInt(route.params.id);
 
-const items = ref({});
 const mainImage = ref({ src: "", alt: "" });
+const selectedItem = ref(items.value.find((item) => item.id === id) || {});
 
 const updateMainImage = (design) => {
   mainImage.value = { src: design.image, alt: "Design " + design.id };
@@ -81,34 +84,30 @@ const onSlideChange = () => {
 };
 
 onMounted(() => {
-  fetch(`http://localhost:5000/items/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      items.value = data;
-      if (data.designs && data.designs.length > 0) {
-        mainImage.value = {
-          src: data.designs[0].image,
-          alt: "Design " + data.designs[0].id,
-        };
-      }
-    })
-    .catch((e) => console.log(e.message));
+  if (selectedItem.value.designs && selectedItem.value.designs.length > 0) {
+    mainImage.value = {
+      src: selectedItem.value.designs[0].image,
+      alt: "Design " + selectedItem.value.designs[0].id,
+    };
+  }
 });
+
 const selectedDesign = ref("/placeholder.png");
 const handleSelectedDesign = (design, id) => {
   selectedDesign.value = design;
-  items.value.designs = items.value.designs.map((d) => {
+  selectedItem.value.designs = selectedItem.value.designs.map((d) => {
     d.active = d.id === id;
     return d;
   });
 };
+
 const liked = ref(inject("liked"));
 
 const handleLikedItems = (design) => {
   if (liked.value.some((likedDesign) => likedDesign.id === design.id)) {
     return;
   }
-  liked.value.push({ ...design, name: items.value.name });
+  liked.value.push({ ...design, name: selectedItem.value.name });
   console.log(liked.value);
 };
 </script>

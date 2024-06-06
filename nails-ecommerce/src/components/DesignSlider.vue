@@ -13,6 +13,7 @@
           ref="swiperRef"
           :slides-per-view="3"
           loop
+          autoplay="true"
           space-between="10"
           @slideChange="onSlideChange"
         >
