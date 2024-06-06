@@ -14,9 +14,12 @@
           <tr>
             <td>Saint Nails</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@_saint_nails_"
+              <a
+                href="https://www.tiktok.com/@_saint_nails_"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
               <RouterLink to="https://www.instagram.com/_saint_nails_/"
@@ -27,80 +30,116 @@
           <tr>
             <td>KayBeauty_bar</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@kaybeauty_bar"
+              <a
+                href="https://www.tiktok.com/@kaybeauty_bar"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
           <tr>
             <td>Lesego's Beauty Bar</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@lesegosbeautybar"
+              <a
+                href="https://www.tiktok.com/@lesegosbeautybar"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
           <tr>
             <td>Nail Inspo</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@_nailsidea"
+              <a
+                href="https://www.tiktok.com/@_nailsidea"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
 
           <tr>
             <td>Magnolia_verde.beauty</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@magnolia_verde.beauty"
+              <a
+                href="https://www.tiktok.com/@magnolia_verde.beauty"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
           <tr>
             <td>Mike's Nails</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@mikeagyeinails"
+              <a
+                href="https://www.tiktok.com/@mikeagyeinails"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
           <tr>
             <td>Ntsakobeauty</td>
             <td>
-              <RouterLink to="https://www.tiktok.com/@ntsakobeauty"
+              <a
+                href="https://www.tiktok.com/@ntsakobeauty"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-tiktok"></i
-              ></RouterLink>
+              ></a>
             </td>
             <td>
-              <RouterLink to="https://www.instagram.com/"
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 ><i class="bi bi-instagram"></i
-              ></RouterLink>
+              ></a>
             </td>
           </tr>
         </tbody>
