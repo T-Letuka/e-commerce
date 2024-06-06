@@ -10,7 +10,7 @@
           id="house"
           ><i class="bi bi-house-heart"></i
         ></RouterLink>
-        <RouterLink v-else to="/" @click="handleactive(nav.id)">{{
+        <RouterLink v-else :to="nav.link" @click="handleactive(nav.id)">{{
           nav.name
         }}</RouterLink>
       </li>

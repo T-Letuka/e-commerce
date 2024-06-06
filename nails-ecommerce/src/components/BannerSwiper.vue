@@ -36,7 +36,7 @@ const props = defineProps({
 });
 </script>
 <style>
-.banner-swiper .swiper {
+.banner-swiper .mySwiper {
   position: absolute;
   width: 30%;
   bottom: 50px;

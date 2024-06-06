@@ -127,8 +127,8 @@
         },
         {
           "id": 3,
-          "image": "/coffin/coffino03.png",
-          "active": true,
+          "image": "/coffin/coffin03.png",
+          "active": false,
           "alt": "Design 1"
         },
         {
@@ -140,7 +140,7 @@
         {
           "id": 5,
           "image": "/coffin/coffin05.png",
-          "active": false,
+          "active": true,
           "alt": "Design 1"
         },
         {
