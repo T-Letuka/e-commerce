@@ -1,12 +1,11 @@
 <template>
   <div>
-    <h1 class="special-title">design page</h1>
-    <Designs />
+    <h1 class="special-title">Search by Name</h1>
+
     <SearchButton />
   </div>
 </template>
 <script setup>
 import SearchButton from "@/components/SearchButton.vue";
-import Designs from "@/sections/Designs.vue";
 </script>
 <style scoped></style>
