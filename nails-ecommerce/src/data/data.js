@@ -24,4 +24,10 @@ export const navigationData = [
     link: "/nail-techs",
     active: false,
   },
+  {
+    id: 5,
+    name: "Sign In",
+    link: "/signin",
+    active: false,
+  },
 ];
