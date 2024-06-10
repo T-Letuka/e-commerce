@@ -50,4 +50,21 @@ p {
 .delay-1s {
   animation-delay: 1s;
 }
+@media (max-width: 576px) {
+  p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  p {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) {
+  p {
+    font-size: 18px;
+  }
+}
 </style>

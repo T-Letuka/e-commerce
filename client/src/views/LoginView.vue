@@ -39,12 +39,14 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "../store";
 
 const email = ref("");
 const password = ref("");
 const error = ref("");
 const loading = ref(false);
 const router = useRouter();
+const authStore = useAuthStore();
 
 const login = async () => {
   loading.value = true;
@@ -53,7 +55,8 @@ const login = async () => {
       email: email.value,
       password: password.value,
     });
-    localStorage.setItem("token", response.data.token);
+    authStore.login(response.data.token);
+    /*  localStorage.setItem("token", response.data.token); */
     router.push("/designs");
     error.value = "";
   } catch (err) {

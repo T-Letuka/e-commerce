@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "../store";
 import HomeView from "../views/HomeView.vue";
 import DesignPreview from "../views/DesignDetailsView.vue";
 import likedView from "../views/LikedView.vue";
@@ -22,21 +23,25 @@ const router = createRouter({
       name: "DesignPreview",
       component: DesignPreview,
       props: true,
+      meta: { requiresAuth: true },
     },
     {
       path: "/liked",
       name: "liked",
       component: likedView,
+      meta: { requiresAuth: true },
     },
     {
       path: "/designs",
       name: "designs",
       component: designsView,
+      meta: { requiresAuth: true },
     },
     {
       path: "/popular",
       name: "popular",
       component: popularView,
+      meta: { requiresAuth: true },
     },
     {
       path: "/nail-techs",
@@ -54,6 +59,14 @@ const router = createRouter({
       component: loginView,
     },
   ],
+});
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore();
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    next("/login");
+  } else {
+    next();
+  }
 });
 
 export default router;

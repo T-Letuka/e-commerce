@@ -62,7 +62,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
-import data from "/api/data.json"; // Ensure the correct path to your data.json file
+import data from "/api/data.json";
 
 const items = ref(data.items);
 

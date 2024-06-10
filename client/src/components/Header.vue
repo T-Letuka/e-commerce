@@ -17,6 +17,10 @@
       </li>
     </ul>
     <div class="features">
+      <button v-if="isAuthenticated" @click="logout" class="sign-out">
+        Sign Out
+      </button>
+      <RouterLink v-else to="/signup" class="sign-up">Sign Up</RouterLink>
       <Liked />
     </div>
   </header>
@@ -24,13 +28,19 @@
 <script setup>
 import { navigationData } from "@/data/data";
 import Liked from "@/components/Liked.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useAuthStore } from "../store";
 
 const navs = ref(navigationData);
 const handleactive = (id) => {
   navs.value.forEach((nav) => {
     nav.active = nav.id === id;
   });
+};
+const authStore = useAuthStore();
+const isAuthenticated = computed(() => authStore.isAuthenticated);
+const logout = () => {
+  authStore.logout();
 };
 </script>
 <style scoped>
@@ -43,6 +53,7 @@ header {
   padding: 30px 100px 30px 200px;
   z-index: 1120;
 }
+
 .logo {
   font-size: 45px;
   color: #9966cc;
@@ -67,6 +78,18 @@ header {
   font-weight: 500;
   font-style: normal;
 }
+.sign-up,
+.sign-out {
+  background-color: var(--third);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
 .nav li a {
   letter-spacing: 2px;
   cursor: pointer;
@@ -80,7 +103,11 @@ header {
 .features {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+}
+.sign-up:hover,
+.sign-out:hover {
+  background-color: var(--primary);
 }
 @media (max-width: 768px) {
   header {
@@ -88,6 +115,11 @@ header {
   }
   .nav {
     display: none;
+  }
+  .sign-up,
+  .sign-out {
+    width: 100%;
+    text-align: center;
   }
 }
 </style>

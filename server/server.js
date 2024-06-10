@@ -22,7 +22,19 @@ app.get("/users", async (req, res) => {
     console.log(error);
   }
 });
+//authetication
+const authenticateToken = (req, res, next) => {
+  const token = req.header("Authorization")?.split(" ")[1];
+  if (!token) return res.sendStatus(401);
 
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+};
+
+//sigining-up
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -41,7 +53,7 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ error: "Error registering user" });
   }
 });
-
+//logging in
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -69,6 +81,49 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Error logging in:", error);
     res.status(500).json({ error: "Error logging in" });
+  }
+});
+//get designs
+app.get("/designs", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM designs");
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Get liked designs for authenticated user
+app.get("/liked", authenticateToken, async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT designs.* FROM designs JOIN likes ON designs.id = likes.design_id WHERE likes.user_id = $1",
+      [req.user.id]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Like a design
+app.post("/designs/:id/like", authenticateToken, async (req, res) => {
+  const designId = req.params.id;
+  const userId = req.user.id;
+
+  try {
+    await pool.query("INSERT INTO likes (user_id, design_id) VALUES ($1, $2)", [
+      userId,
+      designId,
+    ]);
+    res.status(201).json({ message: "Design liked" });
+  } catch (err) {
+    if (err.code === "23505") {
+      // unique_violation error code
+      res.status(400).json({ error: "Design already liked" });
+    } else {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }
 });
 
