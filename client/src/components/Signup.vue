@@ -33,15 +33,18 @@
         />
       </div>
       <div class="btns">
-        <button type="submit" class="btn btn-primary sign-up">Sign Up</button>
         <button
-          type="button"
-          class="btn btn-link link"
-          @click="$emit('toggle')"
+          type="submit"
+          class="btn btn-primary sign-up"
+          :disabled="loading"
         >
-          OR <i class="bi bi-arrow-right"></i> Login
+          Sign Up
         </button>
+        <RouterLink to="/login" class="link"
+          >Already have an account? Login</RouterLink
+        >
       </div>
+      <p v-if="error">{{ error }}</p>
     </form>
   </div>
 </template>
@@ -49,13 +52,39 @@
 <script setup>
 import { ref } from "vue";
 import confetti from "canvas-confetti";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 const username = ref("");
 const email = ref("");
 const password = ref("");
+const error = ref("");
+const loading = ref(false);
+
+const router = useRouter();
+
+const register = async () => {
+  loading.value = true;
+  try {
+    await axios.post("http://localhost:8000/register", {
+      username: username.value,
+      email: email.value,
+      password: password.value,
+    });
+
+    triggerConfetti();
+    router.push("/login");
+    error.value = "";
+  } catch (err) {
+    error.value =
+      "Registration failed. " + (err.response?.data?.error || err.message);
+  } finally {
+    loading.value = false;
+  }
+};
 
 const submitForm = () => {
-  triggerConfetti();
+  register();
 };
 
 const triggerConfetti = () => {
@@ -86,6 +115,8 @@ label {
 .btns {
   display: flex;
   gap: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 .btn {
   margin-top: 15px;
@@ -96,6 +127,10 @@ label {
   border: none;
   text-transform: uppercase;
 }
+.sign-up:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
 .sign-up:hover {
   background: var(--third);
   text-decoration: underline;
@@ -103,7 +138,8 @@ label {
 }
 .link {
   color: black;
-  font-size: 19px;
+  font-size: 20px;
+  margin-top: 5px;
 }
 .link:hover {
   color: var(--third);
@@ -111,5 +147,38 @@ label {
 }
 i {
   font-size: 15px;
+}
+@media (max-width: 576px) {
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .btns {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn {
+    width: 100%;
+  }
+  .link {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .btns {
+    flex-direction: row;
+    align-items: center;
+  }
+  .btn {
+    margin-top: 15px;
+  }
+  .link {
+    margin-top: 0;
+    font-size: 20px;
+  }
 }
 </style>

@@ -26,8 +26,8 @@ export const navigationData = [
   },
   {
     id: 5,
-    name: "Sign In",
-    link: "/signin",
+    name: "Sign Up",
+    link: "/signup",
     active: false,
   },
 ];

@@ -1,10 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row justify-content-center">
-      <div class="col-md-8 text-center">
-        <h1 class="mb-6 animated fadeIn special-title">
-          Welcome to Nail Designs!
-        </h1>
+      <div class="col-md-8">
         <p class="lead animated fadeIn delay-1s poppins-semibold">
           Welcome to Nail Designs, the ultimate destination for nail art
           enthusiasts! Our website is dedicated to showcasing a wide variety of

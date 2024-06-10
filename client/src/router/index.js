@@ -5,7 +5,8 @@ import likedView from "../views/LikedView.vue";
 import designsView from "../views/DesignsView.vue";
 import nailtechsView from "../views/NailTechView.vue";
 import popularView from "../views/PopularView.vue";
-import SignInView from "../views/SignInView.vue";
+import SignupView from "../views/SignupView.vue";
+import loginView from "../views/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,9 +44,14 @@ const router = createRouter({
       component: nailtechsView,
     },
     {
-      path: "/signin",
-      name: "signin",
-      component: SignInView,
+      path: "/signup",
+      name: "signup",
+      component: SignupView,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: loginView,
     },
   ],
 });

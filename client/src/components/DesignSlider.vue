@@ -42,9 +42,7 @@ const updateMainImage = (design) => {
   mainImage.value = { src: design.src, alt: design.alt };
 };
 
-const onSlideChange = () => {
-  // You can add additional logic for slide change if needed
-};
+const onSlideChange = () => {};
 
 onMounted(async () => {
   try {
