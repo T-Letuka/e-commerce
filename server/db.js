@@ -1,4 +1,4 @@
-const Pool = require("pg").Pool;
+const { Pool } = require("pg");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -10,4 +10,4 @@ const pool = new Pool({
   port: 5432,
 });
 
-module.exports = pool;
+module.exports = { pool };

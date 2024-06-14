@@ -29,24 +29,33 @@
   <div class="likedpage" v-else>
     <div class="container">
       <div class="row mt-5">
-        <h1 class="special-title">Your Liked Designs Page is EmPTY</h1>
+        <h1 class="special-title">Your Liked Designs Page is EMPTY</h1>
         <img src="/sad.jpg" alt="sad-img" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { inject, ref } from "vue";
+import { ref, onMounted } from "vue";
 import LikedItem from "@/components/LikedItem.vue";
+import { useAuthStore } from "../store";
 
-const liked = ref(inject("liked"));
+const authStore = useAuthStore();
+const liked = ref([]);
 
-const handleRemove = (id) => {
-  const index = liked.value.findIndex((item) => item.id === id);
-  if (index !== -1) {
-    liked.value.splice(index, 1);
-  }
+const fetchLikedDesigns = async () => {
+  await authStore.fetchLikedDesigns();
+  liked.value = authStore.likedDesigns;
 };
+
+const handleRemove = async (id) => {
+  await authStore.likeDesign(id); // This will toggle the like status
+  await fetchLikedDesigns(); // Refresh liked designs after removal
+};
+
+onMounted(async () => {
+  await fetchLikedDesigns();
+});
 </script>
 <style scoped>
 .likedpaged {

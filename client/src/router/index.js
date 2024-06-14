@@ -8,6 +8,7 @@ import nailtechsView from "../views/NailTechView.vue";
 import popularView from "../views/PopularView.vue";
 import SignupView from "../views/SignupView.vue";
 import loginView from "../views/LoginView.vue";
+import ProfileView from "../views/ProfileView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: loginView,
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: ProfileView,
     },
   ],
 });

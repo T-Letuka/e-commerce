@@ -30,44 +30,35 @@
           >Don't have an account? Sign up</RouterLink
         >
       </div>
-      <p v-if="error" class="poppins-extrabold">{{ error }}</p>
+      <p v-if="error">{{ error }}</p>
     </form>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import axios from "axios";
-import { useRouter } from "vue-router";
 import { useAuthStore } from "../store";
+import { useRouter } from "vue-router";
 
 const email = ref("");
 const password = ref("");
 const error = ref("");
 const loading = ref(false);
-const router = useRouter();
 const authStore = useAuthStore();
+const router = useRouter();
 
-const login = async () => {
+const submitForm = async () => {
   loading.value = true;
+  error.value = "";
+
   try {
-    const response = await axios.post("http://localhost:8000/login", {
-      email: email.value,
-      password: password.value,
-    });
-    authStore.login(response.data.token);
-    /*  localStorage.setItem("token", response.data.token); */
+    await authStore.login(email.value, password.value);
     router.push("/designs");
-    error.value = "";
   } catch (err) {
     error.value = "Login failed. " + (err.response?.data?.error || err.message);
   } finally {
     loading.value = false;
   }
-};
-
-const submitForm = () => {
-  login();
 };
 </script>
 

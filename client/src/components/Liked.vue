@@ -1,15 +1,15 @@
 <template>
   <div class="cart">
-    <RouterLink to="/liked" class="liked"
-      ><i class="bi bi-balloon-heart"></i
-    ></RouterLink>
-    <span class="count">{{ liked.length }}</span>
+    <RouterLink to="/liked" class="liked">
+      <i class="bi bi-balloon-heart"></i>
+    </RouterLink>
+    <span class="count">{{ authStore.likedDesigns.length }}</span>
   </div>
 </template>
-<script setup>
-import { inject, ref } from "vue";
 
-const liked = ref(inject("liked"));
+<script setup>
+import { useAuthStore } from "../store";
+const authStore = useAuthStore();
 </script>
 <style scoped>
 .count {

@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const pool = require("./db");
+const { pool } = require("./db");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -13,28 +13,38 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-app.use("/images", express.static(path.join(__dirname, "public", "images")));
+app.use(
+  "/images",
+  express.static(
+    path.join(__dirname, "public", "images", "almond", "public/stilleto")
+  )
+);
+
+// Middleware to verify the token
+const verifyToken = (req, res, next) => {
+  const token = req.headers["authorization"];
+  if (!token) return res.status(403).send("Token is required");
+
+  try {
+    const decoded = jwt.verify(token.split(" ")[1], process.env.SECRET_KEY);
+    req.user = decoded;
+    next();
+  } catch (error) {
+    return res.status(401).send("Invalid token");
+  }
+};
+
 app.get("/users", async (req, res) => {
   try {
     const users = await pool.query("SELECT * FROM users");
     res.json(users.rows);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Error fetching users" });
   }
 });
-//authetication
-const authenticateToken = (req, res, next) => {
-  const token = req.header("Authorization")?.split(" ")[1];
-  if (!token) return res.sendStatus(401);
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
-};
-
-//sigining-up
+// Register endpoint
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -53,7 +63,8 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ error: "Error registering user" });
   }
 });
-//logging in
+
+// Login endpoint
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -83,47 +94,74 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ error: "Error logging in" });
   }
 });
-//get designs
-app.get("/designs", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT * FROM designs");
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
 
-// Get liked designs for authenticated user
-app.get("/liked", authenticateToken, async (req, res) => {
+// Get designs
+app.get("/designs/:id", verifyToken, async (req, res) => {
+  const designId = req.params.id;
   try {
-    const result = await pool.query(
-      "SELECT designs.* FROM designs JOIN likes ON designs.id = likes.design_id WHERE likes.user_id = $1",
-      [req.user.id]
+    const designCheck = await pool.query(
+      "SELECT * FROM designs WHERE id = $1",
+      [designId]
     );
-    res.json(result.rows);
+    if (designCheck.rows.length === 0) {
+      return res.status(404).json({ exists: false });
+    }
+    res.status(200).json({ exists: true });
   } catch (err) {
+    console.error("Failed to check design existence:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-// Like a design
-app.post("/designs/:id/like", authenticateToken, async (req, res) => {
+app.post("/designs/:id/like", verifyToken, async (req, res) => {
   const designId = req.params.id;
   const userId = req.user.id;
 
   try {
-    await pool.query("INSERT INTO likes (user_id, design_id) VALUES ($1, $2)", [
-      userId,
-      designId,
-    ]);
-    res.status(201).json({ message: "Design liked" });
-  } catch (err) {
-    if (err.code === "23505") {
-      // unique_violation error code
-      res.status(400).json({ error: "Design already liked" });
-    } else {
-      res.status(500).json({ error: "Internal Server Error" });
+    const designCheck = await pool.query(
+      "SELECT * FROM designs WHERE id = $1",
+      [designId]
+    );
+    if (designCheck.rows.length === 0) {
+      return res.status(404).json({ error: "Design not found" });
     }
+
+    const likeCheck = await pool.query(
+      "SELECT * FROM likes WHERE user_id = $1 AND design_id = $2",
+      [userId, designId]
+    );
+
+    if (likeCheck.rows.length > 0) {
+      await pool.query(
+        "DELETE FROM likes WHERE user_id = $1 AND design_id = $2",
+        [userId, designId]
+      );
+      return res.status(200).json({ message: "Design unliked" });
+    } else {
+      await pool.query(
+        "INSERT INTO likes (user_id, design_id) VALUES ($1, $2)",
+        [userId, designId]
+      );
+      return res.status(201).json({ message: "Design liked" });
+    }
+  } catch (err) {
+    console.error("Failed to toggle like design:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+app.get("/liked", verifyToken, async (req, res) => {
+  try {
+    const likedDesigns = await pool.query(
+      `SELECT d.*, l.design_id
+       FROM likes l
+       JOIN designs d ON l.design_id = d.id
+       WHERE l.user_id = $1`,
+      [req.user.id]
+    );
+    res.json(likedDesigns.rows);
+  } catch (error) {
+    console.error("Failed to fetch liked designs:", error);
+    res.status(500).send("Server error");
   }
 });
 

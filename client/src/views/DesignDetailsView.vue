@@ -7,19 +7,20 @@
         <p>{{ item.brief }}</p>
         <img :src="mainImage.src" :alt="mainImage.alt" />
         <div class="buttons">
-          <button class="btn-back">
-            Back <i class="bi bi-skip-backward"></i>
-          </button>
+          <RouterLink to="/designs">
+            <button class="btn-back">
+              Back <i class="bi bi-skip-backward"></i>
+            </button>
+          </RouterLink>
           <button class="nail-techs">Nail Techs</button>
-          <button class="likeds">
-            <RouterLink to="/liked">Go to liked</RouterLink>
-          </button>
+          <RouterLink to="/liked">
+            <button class="likeds">Go to liked</button>
+          </RouterLink>
         </div>
       </div>
       <!-- Column 2: Slider -->
       <div class="col-md-6 column second">
         <h2 class="special-title">Preview Slides</h2>
-
         <div class="DESIGNS">
           <swiper
             ref="swiperRef"
@@ -42,7 +43,7 @@
               />
               <button
                 class="like-button"
-                @click="handleLikedItems(design)"
+                @click.stop="handleLikedItems(design)"
                 :class="{ 'like-button': true, liked: isLiked(design) }"
               >
                 <i class="bi bi-emoji-heart-eyes"></i>
@@ -57,15 +58,16 @@
 
 <script setup>
 import { useRoute } from "vue-router";
-import { inject, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css";
 import data from "/api/data.json";
+import { useAuthStore } from "../store";
 
+const authStore = useAuthStore();
 const items = ref(data.items);
-
 const modules = [Navigation];
 const route = useRoute();
 const id = parseInt(route.params.id);
@@ -81,7 +83,7 @@ const onSlideChange = () => {};
 
 const item = ref({});
 
-onMounted(() => {
+onMounted(async () => {
   const fetchedItem = data.items.find((item) => item.id === parseInt(id));
   if (fetchedItem) {
     item.value = fetchedItem;
@@ -92,31 +94,28 @@ onMounted(() => {
       };
     }
   }
+  // Fetch liked designs on component mount if authenticated
+  if (authStore.isAuthenticated) {
+    await authStore.fetchLikedDesigns();
+  }
 });
 
 const selectedDesign = ref("/placeholder.png");
-const handleSelectedDesign = (design, id) => {
-  selectedDesign.value = design;
-  selectedItem.value.designs = selectedItem.value.designs.map((d) => {
-    d.active = d.id === id;
-    return d;
-  });
-};
 
-const liked = ref(inject("liked"));
-
-const handleLikedItems = (design) => {
-  if (liked.value.some((likedDesign) => likedDesign.id === design.id)) {
-    return;
+const handleLikedItems = async (design) => {
+  try {
+    await authStore.likeDesign(design.id);
+  } catch (error) {
+    console.error("Error liking design:", error);
   }
-  liked.value.push({ ...design, name: selectedItem.value.name });
-  console.log(liked.value);
 };
+
 const isLiked = (design) => {
-  return liked.value.some((likedDesign) => likedDesign.id === design.id);
+  return authStore.likedDesigns.some(
+    (likedDesign) => likedDesign.id === design.id
+  );
 };
 </script>
-
 <style scoped>
 .container {
   padding: 20px;
@@ -190,7 +189,7 @@ a {
 .designswiper {
   position: absolute;
   width: 50%;
-  bottom: 50px;
+  margin-top: 50px;
   right: 5%;
   padding-bottom: 50px;
   padding-top: 10px;
