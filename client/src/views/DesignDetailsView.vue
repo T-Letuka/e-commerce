@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div v-if="selectedItem" class="container">
     <div class="row">
       <!-- Column 1: Big Picture -->
       <div class="col-md-6 column">
-        <h1 class="special-title">{{ item.name }}</h1>
-        <p>{{ item.brief }}</p>
+        <h1 class="special-title">{{ selectedItem.name }}</h1>
+        <p>{{ selectedItem.brief }}</p>
         <img :src="mainImage.src" :alt="mainImage.alt" />
         <div class="buttons">
           <RouterLink to="/designs">
@@ -12,15 +12,17 @@
               Back <i class="bi bi-skip-backward"></i>
             </button>
           </RouterLink>
+
           <button class="nail-techs">Nail Techs</button>
-          <RouterLink to="/liked">
-            <button class="likeds">Go to liked</button>
-          </RouterLink>
+          <button class="likeds">
+            <RouterLink to="/liked">Go to liked</RouterLink>
+          </button>
         </div>
       </div>
       <!-- Column 2: Slider -->
       <div class="col-md-6 column second">
         <h2 class="special-title">Preview Slides</h2>
+
         <div class="DESIGNS">
           <swiper
             ref="swiperRef"
@@ -43,7 +45,7 @@
               />
               <button
                 class="like-button"
-                @click.stop="handleLikedItems(design)"
+                @click="handleLikedItems(design)"
                 :class="{ 'like-button': true, liked: isLiked(design) }"
               >
                 <i class="bi bi-emoji-heart-eyes"></i>
@@ -53,6 +55,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div v-else>
+    <p>Loading...</p>
   </div>
 </template>
 
@@ -73,7 +78,7 @@ const route = useRoute();
 const id = parseInt(route.params.id);
 
 const mainImage = ref({ src: "", alt: "" });
-const selectedItem = ref(items.value.find((item) => item.id === id) || {});
+const selectedItem = ref(null);
 
 const updateMainImage = (design) => {
   mainImage.value = { src: design.image, alt: "Design " + design.id };
@@ -81,12 +86,11 @@ const updateMainImage = (design) => {
 
 const onSlideChange = () => {};
 
-const item = ref({});
-
 onMounted(() => {
-  const fetchedItem = data.items.find((item) => item.id === parseInt(id));
+  const fetchedItem = items.value.find((item) => item.id === id) || null;
   if (fetchedItem) {
-    item.value = fetchedItem;
+    selectedItem.value = fetchedItem;
+
     if (fetchedItem.designs && fetchedItem.designs.length > 0) {
       mainImage.value = {
         src: fetchedItem.designs[0].image,
@@ -94,24 +98,23 @@ onMounted(() => {
       };
     }
   }
+
   // Fetch liked designs on component mount if authenticated
   if (authStore.isAuthenticated) {
     authStore.fetchLikedDesigns();
   }
 });
 
-const selectedDesign = ref("/placeholder.png");
-
 const handleLikedItems = async (design) => {
   try {
-    await authStore.likeDesign(design.id); // Ensure this uses the correct design_variant_id
+    await authStore.likeDesign(design.id);
   } catch (error) {
     console.error("Error liking design:", error);
   }
 };
 
 const isLiked = (design) => {
-  return authStore.isDesignLiked(design.id); // Ensure this uses the correct design_variant_id
+  return authStore.isDesignLiked(design.id);
 };
 </script>
 <style scoped>
@@ -132,16 +135,13 @@ const isLiked = (design) => {
   padding: 5px;
   background: black;
   color: white;
-
   gap: 5px;
-
   font-size: 17px;
 }
 .likeds {
   padding: 5px;
   background: black;
   color: white;
-
   font-size: 17px;
 }
 a {
@@ -191,5 +191,26 @@ a {
   right: 5%;
   padding-bottom: 50px;
   padding-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .column {
+    text-align: center;
+  }
+  .column img {
+    width: 100%;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .second {
+    margin-top: 50px;
+  }
+  .designswiper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 </style>
