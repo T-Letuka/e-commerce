@@ -113,6 +113,7 @@ app.get("/designs/:id", verifyToken, async (req, res) => {
   }
 });
 
+// Like or unlike a design variant
 app.post("/designs/:design_variant_id/like", verifyToken, async (req, res) => {
   const userId = req.user.id;
   const designVariantId = parseInt(req.params.design_variant_id);
@@ -145,6 +146,7 @@ app.post("/designs/:design_variant_id/like", verifyToken, async (req, res) => {
   }
 });
 
+// Get liked designs
 app.get("/liked", verifyToken, async (req, res) => {
   const userId = req.user.id;
 

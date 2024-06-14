@@ -4,27 +4,23 @@ const { pool } = require("./db");
 
 const dataPath = path.join(__dirname, "data.json");
 
-const insertDesigns = async () => {
+const insertDesignVariants = async () => {
   try {
     const data = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-    const designVariants = data.items.flatMap((item) =>
-      item.designs.map((design) => ({
-        design_id: item.id,
-        image: design.image,
-        active: design.active || false,
-        alt: design.alt || `Design ${design.id}`,
-      }))
-    );
+    const items = data.items;
 
-    // Insert design variants
-    for (const variant of designVariants) {
-      await pool.query(
-        "INSERT INTO design_variants (design_id, image, active, alt) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING",
-        [variant.design_id, variant.image, variant.active, variant.alt]
-      );
-      console.log(
-        `Inserted design variant for design ID: ${variant.design_id}`
-      );
+    for (const item of items) {
+      const designVariants = item.designs;
+
+      for (const design of designVariants) {
+        await pool.query(
+          "INSERT INTO design_variants (id, design_id, image, active, alt) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO NOTHING",
+          [design.id, item.id, design.image, design.active, design.alt]
+        );
+        console.log(
+          `Inserted design variant with ID: ${design.id} for design ID: ${item.id}`
+        );
+      }
     }
 
     console.log("Design variants inserted successfully.");
@@ -33,4 +29,5 @@ const insertDesigns = async () => {
   }
 };
 
-insertDesigns();
+insertDesignVariants();
+//last try :(
