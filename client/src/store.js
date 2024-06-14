@@ -40,10 +40,10 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
-  const likeDesign = async (designId) => {
+  const likeDesign = async (designVariantId) => {
     try {
       await axios.post(
-        `http://localhost:8000/designs/${designId}/like`,
+        `http://localhost:8000/designs/${designVariantId}/like`,
         {},
         {
           headers: { Authorization: `Bearer ${token.value}` },
@@ -55,6 +55,10 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
+  const isDesignLiked = (designVariantId) => {
+    return likedDesigns.value.some((design) => design.id === designVariantId);
+  };
+
   return {
     token,
     isAuthenticated,
@@ -63,5 +67,6 @@ export const useAuthStore = defineStore("auth", () => {
     logout,
     fetchLikedDesigns,
     likeDesign,
+    isDesignLiked,
   };
 });

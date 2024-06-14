@@ -113,55 +113,55 @@ app.get("/designs/:id", verifyToken, async (req, res) => {
   }
 });
 
-app.post("/designs/:id/like", verifyToken, async (req, res) => {
-  const designId = req.params.id;
+app.post("/designs/:design_variant_id/like", verifyToken, async (req, res) => {
+  const userId = req.user.id;
+  const designVariantId = parseInt(req.params.design_variant_id);
+
+  try {
+    // Check if already liked
+    const existingLike = await pool.query(
+      "SELECT * FROM likes WHERE user_id = $1 AND design_variant_id = $2",
+      [userId, designVariantId]
+    );
+
+    if (existingLike.rows.length > 0) {
+      // If liked, remove like
+      await pool.query(
+        "DELETE FROM likes WHERE user_id = $1 AND design_variant_id = $2",
+        [userId, designVariantId]
+      );
+    } else {
+      // If not liked, add like
+      await pool.query(
+        "INSERT INTO likes (user_id, design_variant_id) VALUES ($1, $2)",
+        [userId, designVariantId]
+      );
+    }
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error liking design variant:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/liked", verifyToken, async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const designCheck = await pool.query(
-      "SELECT * FROM designs WHERE id = $1",
-      [designId]
-    );
-    if (designCheck.rows.length === 0) {
-      return res.status(404).json({ error: "Design not found" });
-    }
-
-    const likeCheck = await pool.query(
-      "SELECT * FROM likes WHERE user_id = $1 AND design_id = $2",
-      [userId, designId]
+    const result = await pool.query(
+      "SELECT dv.id, dv.design_id, dv.image, dv.alt, d.name " +
+        "FROM likes l " +
+        "JOIN design_variants dv ON l.design_variant_id = dv.id " +
+        "JOIN designs d ON dv.design_id = d.id " +
+        "WHERE l.user_id = $1",
+      [userId]
     );
 
-    if (likeCheck.rows.length > 0) {
-      await pool.query(
-        "DELETE FROM likes WHERE user_id = $1 AND design_id = $2",
-        [userId, designId]
-      );
-      return res.status(200).json({ message: "Design unliked" });
-    } else {
-      await pool.query(
-        "INSERT INTO likes (user_id, design_id) VALUES ($1, $2)",
-        [userId, designId]
-      );
-      return res.status(201).json({ message: "Design liked" });
-    }
-  } catch (err) {
-    console.error("Failed to toggle like design:", err);
-    res.status(500).json({ error: "Internal Server Error" });
-  }
-});
-app.get("/liked", verifyToken, async (req, res) => {
-  try {
-    const likedDesigns = await pool.query(
-      `SELECT d.*, l.design_id
-       FROM likes l
-       JOIN designs d ON l.design_id = d.id
-       WHERE l.user_id = $1`,
-      [req.user.id]
-    );
-    res.json(likedDesigns.rows);
+    res.json(result.rows);
   } catch (error) {
-    console.error("Failed to fetch liked designs:", error);
-    res.status(500).send("Server error");
+    console.error("Error fetching liked designs:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 

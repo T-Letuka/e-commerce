@@ -83,7 +83,7 @@ const onSlideChange = () => {};
 
 const item = ref({});
 
-onMounted(async () => {
+onMounted(() => {
   const fetchedItem = data.items.find((item) => item.id === parseInt(id));
   if (fetchedItem) {
     item.value = fetchedItem;
@@ -96,7 +96,7 @@ onMounted(async () => {
   }
   // Fetch liked designs on component mount if authenticated
   if (authStore.isAuthenticated) {
-    await authStore.fetchLikedDesigns();
+    authStore.fetchLikedDesigns();
   }
 });
 
@@ -104,16 +104,14 @@ const selectedDesign = ref("/placeholder.png");
 
 const handleLikedItems = async (design) => {
   try {
-    await authStore.likeDesign(design.id);
+    await authStore.likeDesign(design.id); // Ensure this uses the correct design_variant_id
   } catch (error) {
     console.error("Error liking design:", error);
   }
 };
 
 const isLiked = (design) => {
-  return authStore.likedDesigns.some(
-    (likedDesign) => likedDesign.id === design.id
-  );
+  return authStore.isDesignLiked(design.id); // Ensure this uses the correct design_variant_id
 };
 </script>
 <style scoped>

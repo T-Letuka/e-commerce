@@ -1,19 +1,18 @@
 <template>
   <tr class="likedItem">
-    <th scope="row">
-      {{ index + 1 }}
-    </th>
+    <th scope="row">{{ index + 1 }}</th>
     <td><img :src="item.image" alt="" class="img-fluid" /></td>
     <td>
       <RouterLink :to="`/designs/${item.id}`">{{ item.name }}</RouterLink>
     </td>
     <td>
       <a href="#"
-        ><i className="bi bi-trash" @click.stop.prevent="emitRemove"></i
+        ><i class="bi bi-trash" @click.stop.prevent="emitRemove"></i
       ></a>
     </td>
   </tr>
 </template>
+
 <script setup>
 const props = defineProps({
   item: {
@@ -31,6 +30,9 @@ const emit = defineEmits(["remove"]);
 const emitRemove = () => {
   emit("remove", props.item.id);
 };
+
+// Log the item to check if the data structure is correct
+console.log(props.item);
 </script>
 <style scoped>
 .likedItem {
