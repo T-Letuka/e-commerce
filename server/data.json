@@ -1,0 +1,427 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Stilleto",
+      "brief": "Fierce and Fabulous: Channel your inner diva with our Stiletto nails, designed for those who dare to be bold.",
+      "bgColor": "#E5E4E2",
+      "imgUrl": "/stilleto4.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 10,
+          "image": "/stilleto/stilleto1.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 11,
+          "image": "/stilleto/stilleto2.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 12,
+          "image": "/stilleto/stilleto01.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 13,
+          "image": "/stilleto/stilleto02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 14,
+          "image": "/stilleto/stilleto04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 15,
+          "image": "/stilleto/stilleto05.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 16,
+          "image": "/stilleto/stilleto06.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 17,
+          "image": "/stilleto/stilleto07.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 18,
+          "image": "/stilleto/stilleto08.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 19,
+          "image": "/stilleto/stilleto03.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Squoval",
+      "brief": "Crisp and Classy: Elevate your style with Square nails that are perfect for a polished and professional appearance.",
+      "bgColor": "#F2C1D1",
+      "imgUrl": "/squoval.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 20,
+          "image": "/squoval/squoval01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 21,
+          "image": "/coffin/coffin02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 22,
+          "image": "/squoval/squoval03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 23,
+          "image": "/squoval/squoval04.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+
+    {
+      "id": 3,
+      "name": "Coffin",
+      "brief": "Chic and Sleek: Discover the ultimate in modern elegance with our Coffin nails, designed for the trendsetter in you.",
+      "bgColor": "#592720",
+      "imgUrl": "/coffin.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 24,
+          "image": "/coffin/coffin01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 25,
+          "image": "/coffin/coffin02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 26,
+          "image": "/coffin/coffin03.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 27,
+          "image": "/coffin/coffin04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 28,
+          "image": "/coffin/coffin05.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 29,
+          "image": "/coffin/coffin10.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 30,
+          "image": "/coffin/coffin06.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 31,
+          "image": "/coffin/coffin07.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 32,
+          "image": "/coffin/coffin08.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 33,
+          "image": "/coffin/coffin09.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Almond",
+      "brief": "Classic Beauty: Achieve a timeless look with our Almond nails, where elegance meets simplicity.",
+      "bgColor": "#D2B48C",
+      "imgUrl": "/almond1.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 34,
+          "image": "/almond/almond01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 35,
+          "image": "/almond/almond02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 36,
+          "image": "/almond/almond03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 37,
+          "image": "/almond/almond04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 38,
+          "image": "/almond/almond05.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Square",
+      "brief": "Sleek Precision: Our Square nails offer a sharp and sophisticated look for the contemporary fashionista",
+      "bgColor": "#ffddd2",
+      "imgUrl": "/square1.png",
+      "active": true,
+      "designs": [
+        {
+          "id": 39,
+          "image": "/square01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 40,
+          "image": "/square/square02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 41,
+          "image": "/square/square03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 42,
+          "image": "/square/square04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 43,
+          "image": "/square/square05.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 44,
+          "image": "/square/square06.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 45,
+          "image": "/square/square07.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 46,
+          "image": "/square/square08.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 48,
+          "image": "/square/square09.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 49,
+          "image": "/square/square10.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Stilleto",
+      "brief": "Sharp Elegance: Elevate your style game with our striking Stiletto nails, perfect for making a statement.",
+      "bgColor": "#FFDAE9",
+      "imgUrl": "/stilleto6.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 50,
+          "image": "/stilleto2/stilleto01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 51,
+          "image": "/stilleto2/stilleto02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 52,
+          "image": "/stilleto2/stilleto03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 53,
+          "image": "/stilleto2/stilleto04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 54,
+          "image": "/stilleto2/stilleto05.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 55,
+          "image": "/stilleto2/stilleto10.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 56,
+          "image": "/stilleto2/stilleto06.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 57,
+          "image": "/stilleto2/stilleto07.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 58,
+          "image": "/stilleto2/stilleto08.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 59,
+          "image": "/stilleto2/stilleto09.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Duck",
+      "brief": "Stand out from the crowd with duck nails, featuring a fun and funky shape that's perfect for the trendsetter in you.",
+      "bgColor": "#C8A2C8",
+      "imgUrl": "/duck.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 60,
+          "image": "/duck/duck01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 61,
+          "image": "/duck/duck02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 62,
+          "image": "/duck/duck03.png",
+          "active": true,
+          "alt": "Design 1"
+        },
+        {
+          "id": 63,
+          "image": "/duck/duck04.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 64,
+          "image": "/duck/duck05.png",
+          "active": false,
+          "alt": "Design 1"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Lipstick",
+      "brief": "Add a touch of drama to your manicure with lipstick nails, inspired by the iconic shape of your favorite beauty essential.",
+      "bgColor": "#F1DDCF",
+      "imgUrl": "/lipstick.png",
+      "active": false,
+      "designs": [
+        {
+          "id": 65,
+          "image": "/lipstick/lipstick01.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 66,
+          "image": "/lipstick/lipstick02.png",
+          "active": false,
+          "alt": "Design 1"
+        },
+        {
+          "id": 67,
+          "image": "/lipstick/lipstick03.png",
+          "active": true,
+          "alt": "Design 1"
+        }
+      ]
+    }
+  ]
+}
