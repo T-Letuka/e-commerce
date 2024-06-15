@@ -10,7 +10,7 @@
       <p class="eg">EXAMPLE: DUCK</p>
       <ul v-if="filteredItems.length > 0" class="list-group">
         <li
-          v-for="item in filteredItems.slice(0, 5)"
+          v-for="item in filteredItems"
           :key="item.id"
           class="list-group-item list-group-item-action"
         >

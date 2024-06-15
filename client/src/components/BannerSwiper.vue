@@ -110,14 +110,15 @@ const props = defineProps({
 @media (max-width: 768px) {
   .swiper {
     width: 90%;
-    left: 5%;
-    bottom: 20px;
+    right: 5%;
+    bottom: 55px;
     padding-bottom: 20px;
     padding-top: 5px;
+    margin: 0 auto;
   }
   .swiper-slide {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
   }
   .swiper .swiper-button-prev,
   .swiper .swiper-button-next {

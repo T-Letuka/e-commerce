@@ -18,7 +18,7 @@
     </ul>
     <div class="features">
       <button v-if="isAuthenticated" @click="logout" class="sign-out">
-        Sign Out
+        <i class="bi bi-box-arrow-in-left" id="log-out"></i>
       </button>
       <RouterLink v-else to="/signup" class="sign-up">Sign Up</RouterLink>
       <Liked />
@@ -44,6 +44,9 @@ const logout = () => {
 };
 </script>
 <style scoped>
+#log-out {
+  font-size: 20px;
+}
 header {
   position: relative;
   width: 95%;
@@ -118,8 +121,11 @@ header {
   }
   .sign-up,
   .sign-out {
-    width: 100%;
+    width: 80%;
     text-align: center;
+    font-size: 15px;
+    white-space: nowrap;
+    margin-left: 5px;
   }
 }
 </style>
