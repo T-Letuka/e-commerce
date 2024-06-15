@@ -211,6 +211,7 @@ a {
     position: relative;
     width: 100%;
     margin: 0 auto;
+    height: 50vh;
   }
 }
 </style>
