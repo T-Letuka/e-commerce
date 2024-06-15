@@ -42,7 +42,6 @@ const router = createRouter({
       path: "/popular",
       name: "popular",
       component: popularView,
-      meta: { requiresAuth: true },
     },
     {
       path: "/nail-techs",

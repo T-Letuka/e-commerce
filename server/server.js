@@ -167,16 +167,16 @@ app.get("/liked", verifyToken, async (req, res) => {
   }
 });
 //popular by likes
-
-app.get("/popular-designs", async (req, res) => {
+app.get("/popular", async (req, res) => {
   try {
     const result = await pool.query(
-      `SELECT dv.id AS design_variant_id, dv.design_id, dv.image, dv.alt, d.name, COUNT(l.id) AS like_count
+      `SELECT d.id AS design_id, d.name AS item_name, dv.id AS design_variant_id, dv.image, dv.alt, COUNT(l.id) AS like_count
        FROM design_variants dv
        JOIN designs d ON dv.design_id = d.id
        LEFT JOIN likes l ON dv.id = l.design_variant_id
-       GROUP BY dv.id, d.id
-       ORDER BY like_count DESC`
+       GROUP BY d.id, dv.id
+       HAVING COUNT(l.id) > 2
+       ORDER BY d.name, like_count DESC`
     );
 
     res.json(result.rows);

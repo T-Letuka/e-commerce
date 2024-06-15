@@ -3,7 +3,7 @@
     <th scope="row">{{ index + 1 }}</th>
     <td><img :src="item.image" alt="" class="img-fluid" /></td>
     <td>
-      <RouterLink :to="`/designs/${item.id}`">{{ item.name }}</RouterLink>
+      <RouterLink :to="`/designs/${item.name}`">{{ item.name }}</RouterLink>
     </td>
     <td>
       <a href="#"

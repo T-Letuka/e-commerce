@@ -99,7 +99,6 @@ onMounted(() => {
     }
   }
 
-  // Fetch liked designs on component mount if authenticated
   if (authStore.isAuthenticated) {
     authStore.fetchLikedDesigns();
   }
@@ -194,8 +193,12 @@ a {
 }
 
 @media (max-width: 767px) {
+  h2 {
+    margin-top: 30px;
+  }
   .column {
     text-align: center;
+    padding-left: 50px;
   }
   .column img {
     width: 100%;

@@ -38,12 +38,13 @@ const props = defineProps({
 <style>
 .banner-swiper .mySwiper {
   position: absolute;
-  width: 30%;
+  width: 90%; /* Adjusted for responsiveness */
   bottom: 50px;
-  left: 10%;
+  left: 5%; /* Adjusted for responsiveness */
   padding-bottom: 50px;
   padding-top: 10px;
 }
+
 .banner-swiper .swiper-slide {
   background-position: center;
   background-size: cover;
@@ -51,20 +52,23 @@ const props = defineProps({
   height: 100px;
   cursor: pointer;
 }
-.banner-swiper .swiper .swiper-button-prev {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 54px;
-  height: 54px;
-}
+
+.banner-swiper .swiper .swiper-button-prev,
 .banner-swiper .swiper .swiper-button-next {
   position: absolute;
-  right: 0;
   top: 50%;
   width: 54px;
   height: 54px;
 }
+
+.banner-swiper .swiper .swiper-button-prev {
+  left: 0;
+}
+
+.banner-swiper .swiper .swiper-button-next {
+  right: 0;
+}
+
 .banner-swiper .swiper .swiper-button-next::after,
 .banner-swiper .swiper .swiper-button-prev::after {
   font-size: 30px;
@@ -82,46 +86,42 @@ const props = defineProps({
   justify-content: center;
   transition: 0.3s;
 }
+
 .banner-swiper .swiper .swiper-button-next::hover,
 .banner-swiper .swiper .swiper-button-prev::hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2) !important;
   color: rgba(252, 10, 10, 0.8) !important;
 }
+
 .swiper-slide img {
   display: block;
   width: 100%;
 }
-@media (max-width: 1440px) {
-  .swiper {
-    width: 25%;
-    left: 15%;
-  }
-  .swiper-slide {
-    width: 120px;
-    height: 120px;
-  }
-  .swiper .swiper-button-prev,
-  .swiper .swiper-button-next {
-    width: 60px;
-    height: 60px;
-  }
-}
+
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .swiper {
-    width: 90%;
-    right: 5%;
-    bottom: 55px;
-    padding-bottom: 20px;
+  .banner-swiper .mySwiper {
+    width: 100%;
+    left: 0;
+    padding-bottom: 30px;
     padding-top: 5px;
-    margin: 0 auto;
   }
-  .swiper-slide {
-    width: 100px;
-    height: 100px;
+
+  .banner-swiper .swiper-slide {
+    width: 80px;
+    height: 80px;
   }
-  .swiper .swiper-button-prev,
-  .swiper .swiper-button-next {
+
+  .banner-swiper .swiper .swiper-button-prev,
+  .banner-swiper .swiper .swiper-button-next {
+    width: 40px;
+    height: 40px;
+  }
+
+  .banner-swiper .swiper .swiper-button-next::after,
+  .banner-swiper .swiper .swiper-button-prev::after {
+    font-size: 20px;
     width: 40px;
     height: 40px;
   }
