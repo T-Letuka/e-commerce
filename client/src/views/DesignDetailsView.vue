@@ -188,7 +188,7 @@ a {
   position: absolute;
   width: 50%;
   margin-top: 50px;
-  right: 5%;
+  right: -35%;
   padding-bottom: 50px;
   padding-top: 10px;
 }
@@ -206,6 +206,9 @@ a {
   }
   .second {
     margin-top: 50px;
+  }
+  p {
+    padding-left: 50px;
   }
   .designswiper {
     position: relative;

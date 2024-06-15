@@ -166,6 +166,25 @@ app.get("/liked", verifyToken, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+//popular by likes
+
+app.get("/popular-designs", async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT dv.id AS design_variant_id, dv.design_id, dv.image, dv.alt, d.name, COUNT(l.id) AS like_count
+       FROM design_variants dv
+       JOIN designs d ON dv.design_id = d.id
+       LEFT JOIN likes l ON dv.id = l.design_variant_id
+       GROUP BY dv.id, d.id
+       ORDER BY like_count DESC`
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching popular designs:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
