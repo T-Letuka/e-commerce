@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "deploy": "node server.js",
-    "migrate": "sequelize-cli db:migrate"
+    "migrate": "sequelize-cli db:migrate",
+    "build": "echo 'No build step needed'"
   },
   "author": "",
   "license": "ISC",
