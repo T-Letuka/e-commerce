@@ -11,17 +11,17 @@ export const navigationData = [
     link: "/designs",
     active: false,
   },
-  {
-    id: 3,
-    name: "Popular",
-    link: "/popular",
-    active: false,
-  },
 
   {
-    id: 4,
+    id: 3,
     name: "Nail Techs",
     link: "/nail-techs",
+    active: false,
+  },
+  {
+    id: 4,
+    name: "Login",
+    link: "/login",
     active: false,
   },
 ];

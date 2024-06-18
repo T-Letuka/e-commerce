@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "deploy": "node server.js"
+    "deploy": "node server.js",
+    "migrate": "sequelize-cli db:migrate"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,9 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.3",
-    "pg": "^8.12.0"
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
   }
 }

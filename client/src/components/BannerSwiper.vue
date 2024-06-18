@@ -38,13 +38,12 @@ const props = defineProps({
 <style>
 .banner-swiper .mySwiper {
   position: absolute;
-  width: 90%; /* Adjusted for responsiveness */
+  width: 30%;
   bottom: 50px;
-  left: 5%; /* Adjusted for responsiveness */
+  left: 10%;
   padding-bottom: 50px;
   padding-top: 10px;
 }
-
 .banner-swiper .swiper-slide {
   background-position: center;
   background-size: cover;
@@ -52,23 +51,20 @@ const props = defineProps({
   height: 100px;
   cursor: pointer;
 }
-
-.banner-swiper .swiper .swiper-button-prev,
-.banner-swiper .swiper .swiper-button-next {
+.banner-swiper .swiper .swiper-button-prev {
   position: absolute;
+  left: 0;
   top: 50%;
   width: 54px;
   height: 54px;
 }
-
-.banner-swiper .swiper .swiper-button-prev {
-  left: 0;
-}
-
 .banner-swiper .swiper .swiper-button-next {
+  position: absolute;
   right: 0;
+  top: 50%;
+  width: 54px;
+  height: 54px;
 }
-
 .banner-swiper .swiper .swiper-button-next::after,
 .banner-swiper .swiper .swiper-button-prev::after {
   font-size: 30px;
@@ -86,14 +82,12 @@ const props = defineProps({
   justify-content: center;
   transition: 0.3s;
 }
-
 .banner-swiper .swiper .swiper-button-next::hover,
 .banner-swiper .swiper .swiper-button-prev::hover {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2) !important;
   color: rgba(252, 10, 10, 0.8) !important;
 }
-
 .swiper-slide img {
   display: block;
   width: 100%;
