@@ -7,9 +7,11 @@ export const useAuthStore = defineStore("auth", () => {
   const isAuthenticated = ref(!!token.value);
   const likedDesigns = ref([]);
 
+  const serverUrl = "https://e-commerce-server-tzfk.onrender.com";
+
   const login = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:8000/login", {
+      const response = await axios.post(`${serverUrl}/login`, {
         email,
         password,
       });
@@ -31,7 +33,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   const fetchLikedDesigns = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/liked", {
+      const response = await axios.get(`${serverUrl}/liked`, {
         headers: { Authorization: `Bearer ${token.value}` },
       });
       likedDesigns.value = response.data;
@@ -43,7 +45,7 @@ export const useAuthStore = defineStore("auth", () => {
   const likeDesign = async (designVariantId) => {
     try {
       await axios.post(
-        `http://localhost:8000/designs/${designVariantId}/like`,
+        `${serverUrl}/designs/${designVariantId}/like`,
         {},
         {
           headers: { Authorization: `Bearer ${token.value}` },
