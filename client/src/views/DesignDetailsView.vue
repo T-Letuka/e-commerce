@@ -185,7 +185,7 @@ a {
 }
 .designswiper {
   position: absolute;
-  width: 50%;
+  width: 80%;
   margin-top: 50px;
   right: -35%;
   padding-bottom: 50px;
@@ -204,7 +204,6 @@ a {
     width: 100%;
   }
   .buttons {
-    flex-direction: column;
     gap: 10px;
   }
   .second {
@@ -216,8 +215,9 @@ a {
   .designswiper {
     position: relative;
     width: 100%;
-    margin: 0 auto;
+    margin: 15px auto;
     height: 50vh;
+    right: -10%;
   }
 }
 </style>
