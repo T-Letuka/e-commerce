@@ -24,19 +24,16 @@ const router = createRouter({
       name: "DesignPreview",
       component: DesignPreview,
       props: true,
-      meta: { requiresAuth: true },
     },
     {
       path: "/liked",
       name: "liked",
       component: likedView,
-      meta: { requiresAuth: true },
     },
     {
       path: "/designs",
       name: "designs",
       component: designsView,
-      meta: { requiresAuth: true },
     },
     {
       path: "/popular",
